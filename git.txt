@@ -1,0 +1,9 @@
+git checkout --track origin/development
+git remote add wr wr-dell:/home/git/PROJECT_NAME ----->add一个remote
+
+git fetch --all ------>列出所有的分支
+git push -u wr products_dev 
+
+ln -s ../../pre-commit.sh .git/hooks/pre-commit
+
+find paht/to/ -type f | xargs grep "find what you want"
