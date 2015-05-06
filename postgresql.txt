@@ -1,0 +1,26 @@
+登录: sudo -u postgres psql
+      psql -U postgres 
+导入数据：sudo psql -U postgres -h localhost -d wq1_1001 -f /home/leo/wq1_1001_s.sql
+
+建数据库时设置编码：sudo -u postgres createdb -E EUC_JP -T template0 -l C web9widb
+
+\h：查看SQL命令的解释，比如\h select。
+\?：查看psql命令列表。
+\l：列出所有数据库。
+\c [database_name]：连接其他数据库。
+\d：列出当前数据库的所有表格。
+\d [table_name]：列出某一张表格的结构。
+\du：列出所有用户。
+\e：打开文本编辑器。
+\conninfo：列出当前数据库和连接的信息。
+
+添加新用户和新数据库以后，就要以新用户的名义登录数据库，这时使用的是psql命令。
+psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432
+上面命令的参数含义如下：-U指定用户，-d指定数据库，-h指定服务器，-p指定端口。
+输入上面命令以后，系统会提示输入dbuser用户的密码。输入正确，就可以登录控制台了。
+psql命令存在简写形式。如果当前Linux系统用户，同时也是PostgreSQL用户，则可以省略用户名（-U参数的部分）。举例来说，我的 Linux系统用户名为ruanyf，且PostgreSQL数据库存在同名用户，则我以ruanyf身份登录Linux系统后，可以直接使用下面的命令 登录数据库，且不需要密码。
+psql exampledb
+此时，如果PostgreSQL内部还存在与当前系统用户同名的数据库，则连数据库名都可以省略。比如，假定存在一个叫做ruanyf的数据库，则直接键入psql就可以登录该数据库。
+psql
+另外，如果要恢复外部数据，可以使用下面的命令。
+psql exampledb < exampledb.sql
